@@ -1,0 +1,29 @@
+version: "3.2"
+services:
+  db:
+    image: mongo:5.0
+    container_name: db
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: crud_api_node
+      MONGO_INITDB_ROOT_USERnAME: sandbox
+      MONGO_INITDB_ROOT_PASSWORD: sandbox
+  api:
+    image: node:latest
+    container_name: api
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 3001:3001
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: npm run dev
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
