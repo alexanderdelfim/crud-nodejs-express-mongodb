@@ -8,7 +8,7 @@ services:
       - 27017:27017
     environment:
       MONGO_INITDB_DATABASE: crud_api_node
-      MONGO_INITDB_ROOT_USERnAME: sandbox
+      MONGO_INITDB_ROOT_USERNAME: sandbox
       MONGO_INITDB_ROOT_PASSWORD: sandbox
   api:
     image: node:latest
@@ -21,6 +21,8 @@ services:
     volumes:
       - .:/usr/src/app
     working_dir: /usr/src/app
+    links:
+      - db
     command: npm run dev
     logging:
       driver: "json-file"
