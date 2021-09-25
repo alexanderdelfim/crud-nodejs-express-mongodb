@@ -26,11 +26,11 @@ $ tree
     └── server.js
 ```
 ## Entidade de Produto
-  CAMPO    |   TIPO   |
----------- | ---------|
-Nome       | String   |
-Descrição  | String   |
-Preço      | Number   |
+  CAMPO     |   TIPO   |
+----------- | ---------|
+name        | String   |
+description | String   |
+price       | Number   |
 
 ## Rotas da API a ser desenvolvida:
 
