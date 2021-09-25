@@ -7,6 +7,6 @@ exports.store = async (req, res) => {
 
     res.status(201).json({ message: 'Product created successfuly!', product });
   } catch (err) {
-    res.send(`Error trying to save the Product: ${err}`);
+    res.status(400).json({ message: `Error trying to save the Product: ${err}` });
   }
 };
