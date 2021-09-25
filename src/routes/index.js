@@ -1,16 +1,16 @@
 const express = require('express');
-const routes = express.Router();
 
-routes.use(function(req, res, next) {
+const router = express.Router();
+
+const index = require('./api.routes');
+const productsRouter = require('./product.routes');
+
+router.use((req, res, next) => {
   console.log(`New request recived for url: ${req.url}`);
   next();
-})
-
-routes.get('/api', function (req, res) {
-  res.status(200).send({
-    success: true,
-    message: 'Hello World!',
-  });
 });
 
-module.exports = routes;
+router.use(index);
+router.use('/api/products', productsRouter);
+
+module.exports = router;
